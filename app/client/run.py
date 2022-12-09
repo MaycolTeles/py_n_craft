@@ -4,16 +4,18 @@ Run module. This is where the application starts.
 
 from ursina import Ursina
 
+ursina = Ursina()
+
 
 def main() -> None:
     """
     Main function. This is where the application starts.
     """
-    ursina = Ursina()
+    from src import Game, GameClient
 
-    from src import Game
+    client = GameClient()
 
-    game = Game(ursina)
+    game = Game(ursina, client)
     game.start()
 
 

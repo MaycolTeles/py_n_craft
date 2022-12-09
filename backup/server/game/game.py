@@ -2,17 +2,19 @@
 Module containing the "Game" Class.
 """
 
-from ursina import Ursina, EditorCamera, Entity, Vec3, application, scene
+from ursina import Ursina, Entity
 
-from src.player import Player
-from src.world import World
-from src.world.constants import WORLD_NEGATIVE_Y_SIZE
+from .world import World
+
+# from src.world.constants import WORLD_NEGATIVE_Y_SIZE
 
 
 class Game(Entity):
     """
     Class to represent the game.
     """
+
+    _players = []
 
     def __init__(self, ursina: Ursina) -> None:
         """
@@ -42,8 +44,8 @@ class Game(Entity):
 
         This method will be called on each frame.
         """
-        if self._player.y < WORLD_NEGATIVE_Y_SIZE:
-            self._kill_player()
+        # if self._player.y < WORLD_NEGATIVE_Y_SIZE:
+        #     self._kill_player()
 
     def start(self) -> None:
         """
@@ -51,12 +53,12 @@ class Game(Entity):
         """
         self._ursina.run()
 
-    def _kill_player(self) -> None:
-        """
-        Private Method to kill the player.
-        """
-        print("PLAYER DIED")
-        self._player.die()
+    # def _kill_player(self) -> None:
+    #     """
+    #     Private Method to kill the player.
+    #     """
+    #     print("PLAYER DIED")
+    #     self._player.die()
 
     def _set_constants(self) -> None:
         """
@@ -68,29 +70,27 @@ class Game(Entity):
         """
         Private Method to set up the game entity.
         """
-        game_attributes = {"parent": scene}
-
-        super().__init__(**game_attributes)
+        super().__init__()
 
     def _set_entites(self) -> None:
         """
         Private Method to set up the game-related entites.
         """
         self._world = World()
-        self._player = Player()
-        self._editor_camera = EditorCamera(enabled=False, ignore_paused=True)
-        self._pause_handler = Entity(ignore_paused=True, input=self._pause_game)
+        # self._player = Player()
+        # self._editor_camera = EditorCamera(enabled=False, ignore_paused=True)
+        # self._pause_handler = Entity(ignore_paused=True, input=self._pause_game)
 
-    def _pause_game(self, key: str) -> None:
-        """
-        Private Method to pause the game.
+    # def _pause_game(self, key: str) -> None:
+    #     """
+    #     Private Method to pause the game.
 
-        The game will be paused/unpaused if the key "tab" is pressed.
-        """
-        if key != "tab":
-            return
+    #     The game will be paused/unpaused if the key "tab" is pressed.
+    #     """
+    #     if key != "tab":
+    #         return
 
-        application.paused = not application.paused
-        self._editor_camera.enabled = not self._editor_camera.enabled
-        self._editor_camera.position = self._player.position + Vec3(0, 2, 0)
-        self._player.camera_pivot.enabled = not self._player.camera_pivot.enabled
+    #     application.paused = not application.paused
+    #     self._editor_camera.enabled = not self._editor_camera.enabled
+    #     self._editor_camera.position = self._player.position + Vec3(0, 2, 0)
+    #     self._player.camera_pivot.enabled = not self._player.camera_pivot.enabled

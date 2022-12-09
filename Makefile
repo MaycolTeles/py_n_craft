@@ -31,5 +31,8 @@ lint:
 tests: lint
 	python3.10 -m pytest -vv --cov=. --cov-report=html
 
-run:
-	python3.10 app/run.py
+run-server:
+	python3.10 app/server/run.py
+
+run-client:
+	python3.10 app/client/run.py
