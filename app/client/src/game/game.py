@@ -2,11 +2,12 @@
 Module containing the "Game" Class.
 """
 
+from typing import Optional
+
 from ursina import Ursina, Entity, window
 
 from .player import Player
 from .world import World
-from src.client import GameClient
 
 
 class Game(Entity):
@@ -14,22 +15,27 @@ class Game(Entity):
     Class to represent the game.
     """
 
-    _game_client: GameClient
     _player: Player
     _world: World
 
-    def __init__(self, ursina: Ursina, game_client: GameClient) -> None:
+    def __init__(
+        self, ursina: Ursina, position: Optional[tuple[str, str]] = None
+    ) -> None:
         """
         Constructor used to initialize some values.
         """
         self._ursina = ursina
-        self._game_client = game_client
 
         self._set_entites()
         self._set_entity()
 
-        window.size = (600, 600)
-        window.position = (1600, 0)
+        window.size = (700, 500)
+
+        if position:
+            window.position = position
+
+        else:
+            window.position = (1600, 0)
 
     def input(self, key: str) -> None:
         """
@@ -49,7 +55,6 @@ class Game(Entity):
 
         This method will be called on each frame.
         """
-        self._game_client.client.process_net_events()
 
     def start(self) -> None:
         """

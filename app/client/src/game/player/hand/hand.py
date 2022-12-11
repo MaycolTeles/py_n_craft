@@ -12,7 +12,7 @@ if TYPE_CHECKING:
 # MODULE IMPORTS
 from ursina import Entity, Vec3, destroy, invoke
 
-from src.game.voxel import Voxel, VoxelTextures
+from client.src.game.voxel import Voxel, VoxelTextures
 
 
 class Hand(Entity):

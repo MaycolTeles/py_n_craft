@@ -2,7 +2,7 @@
 __init__ file to export the classes below.
 """
 
-__all__ = ["game_server"]
+__all__ = ["GameServer"]
 
 
-from .server import game_server
+from .server import GameServer

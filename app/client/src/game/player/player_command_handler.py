@@ -12,7 +12,6 @@ if TYPE_CHECKING:
 from ursina import Audio, Entity, Vec3, distance, mouse
 
 from src.game.voxel import Voxel, VoxelTextures
-from src.client import GameClient
 
 
 class PlayerCommandHandler:
@@ -26,7 +25,6 @@ class PlayerCommandHandler:
         """
         Constructor used to initialize some values.
         """
-        self._game_client = GameClient()
         self._player = player
 
     def handle_left_mouse_click(self) -> None:
@@ -47,7 +45,6 @@ class PlayerCommandHandler:
             return
 
         if hasattr(hovered_entity, "handle_click"):
-            self._game_client.send_to_server(hovered_entity)
             hovered_entity.handle_click()
 
     def handle_right_mouse_click(self) -> None:

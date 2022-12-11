@@ -2,21 +2,15 @@
 Run module. This is where the application starts.
 """
 
-from ursina import Ursina
-
-ursina = Ursina()
+from .src import GameServer
 
 
 def main() -> None:
     """
     Main function. This is where the application starts.
     """
-    from src import Game, GameClient
-
-    client = GameClient()
-
-    game = Game(ursina, client)
-    game.start()
+    game_server = GameServer()
+    game_server.start()
 
 
 if __name__ == "__main__":
