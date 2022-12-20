@@ -32,13 +32,13 @@ tests: lint
 	python3.10 -m pyted st -vv --cov=. --cov-report=html
 
 run:
-	python3.10 app/run.py 2550 550
+	python3.10 app/run.py
 
-# run-server:
-# 	python3.10 app/server/run.py
+run-server:
+	python3.10 app/run_server.py
 
-# run-client:
-# 	python3.10 app/client/run.py 2550 550
+run-client:
+	python3.10 app/run_client.py
 
 # run-game:
 # 	python3.10 app/server/run.py & python3.10 app/client/run.py 1200 0 & python3.10 app/client/run.py 2200 0

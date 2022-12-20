@@ -4,11 +4,12 @@ Run module. This is where the application starts.
 
 # import sys
 
-from .src import GameClient
-from ursina import Ursina
+from client.src import GameClient
+
+# from ursina import Ursina
 
 
-ursina = Ursina()
+# ursina = Ursina()
 
 
 def main() -> None:

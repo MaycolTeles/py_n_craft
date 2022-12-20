@@ -1,0 +1,11 @@
+"""
+Module containing some server constants.
+"""
+
+SERVER_HOST = "127.0.0.1"
+SERVER_PORT = 25565
+SERVER_ADDRESS = (SERVER_HOST, SERVER_PORT)
+
+WORLD_SIZE = 10
+
+SERVER_TICK_FREQUENCY = 60

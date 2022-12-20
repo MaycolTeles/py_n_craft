@@ -2,15 +2,14 @@
 Run module. This is where the application starts.
 """
 
-from server.src import GameServer
+from client import run_client
 
 
 def main() -> None:
     """
     Main function. This is where the application starts.
     """
-    game_server = GameServer()
-    game_server.start()
+    run_client.main()
 
 
 if __name__ == "__main__":
